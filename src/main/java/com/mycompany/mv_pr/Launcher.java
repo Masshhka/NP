@@ -21,7 +21,7 @@ public class Launcher
 {
 private static final String APPLICATION_PATH = "src\\main\\webapp";//путь к папке с приложением было src/main/webapp
 private static final int SERVER_PORT = 8080;// на каком порту работает приложение
- private static final String MAPPING = "/";//на каком адресе отвечает приложение
+private static final String MAPPING = "/";//на каком адресе отвечает приложение
 private static void initializeServer(String appPath, String mapping, int port) throws Exception 
     {
         Server server = new Server();
@@ -46,6 +46,10 @@ private static void initializeServer(String appPath, String mapping, int port) t
       {
          exception.printStackTrace();
       }
+      
+        new DB().go(args);
+        System.out.println("SimpleApp finished");
+    
     }
     
 }
