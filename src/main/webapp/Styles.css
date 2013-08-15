@@ -1,0 +1,11 @@
+/* 
+    Document   : Styles
+    Created on : 15.08.2013, 10:09:02
+    Author     : user
+    Description:
+        Purpose of the stylesheet follows.
+*/
+#Title{text-align: center; font-size: larger; text-decoration-color: #cc0033;}
+.Backgr{width: 760px; height: 560px; background-color: whitesmoke; padding: 20px 20px 20px 20px; border: 2px; border-color: #cc0033;}
+p img{float: left; margin: 5px 5px 5px 5px;}
+
