@@ -4,6 +4,9 @@
  */
 package com.mycompany.mv_pr;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.mortbay.jetty.Connector;
 import org.mortbay.jetty.Handler;
 import org.mortbay.jetty.Server;
@@ -38,18 +41,22 @@ private static void initializeServer(String appPath, String mapping, int port) t
 
     public static void main(String[] args)
     {
-      try 
-      {
-        initializeServer(APPLICATION_PATH, MAPPING, SERVER_PORT);
-      } 
-      catch (Exception exception) 
-      {
-         exception.printStackTrace();
-      }
-      
-        new DB().go(args);
-        System.out.println("SimpleApp finished");
-    
+    try {
+        try 
+        {
+          initializeServer(APPLICATION_PATH, MAPPING, SERVER_PORT);
+        } 
+        catch (Exception exception) 
+        {
+           exception.printStackTrace();
+        }
+
+          new DB().go(args);
+          System.out.println("SimpleApp finished");
+    } catch (SQLException ex) {
+        Logger.getLogger(Launcher.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
     }
     
 }
