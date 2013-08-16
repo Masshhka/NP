@@ -19,7 +19,7 @@ import org.mortbay.jetty.webapp.WebAppContext;
  */
 public class Launcher {
 
-    private static final String APPLICATION_PATH = "src/main/webapp";        //путь к папке с приложением было src/main/webapp
+    private static final String APPLICATION_PATH = "src\\main\\webapp";        //путь к папке с приложением было src/main/webapp
     private static final int SERVER_PORT = 8080;                              // на каком порту работает приложение
     private static final String MAPPING = "/";                               //на каком адресе отвечает приложение
 
