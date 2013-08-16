@@ -21,11 +21,14 @@ public class DB {
     /* the default framework is embedded*/
 
     private String framework = "embedded";
+    //В коде не используешь, зачем тогда объявлять?)
     private String driver = "org.apache.derby.jdbc.EmbeddedDriver";
     private String protocol = "jdbc:derby:";
+    private static final String ERROR_TABLE_EXISTS_CODE = "X0Y32";
 
+    //у тебя метод выбрасывает SQLException, обрабатывать его внутри не нужно. Его лучше обработать там, где вызываешь, в launcher.
     void go(String[] args) throws SQLException {
-        parseArguments(args);
+//      parseArguments(args); //не надо вызывать методы с заглушкой, которые бросают исключения. У тебя код дальше не выполнялся.
         System.out.println("SimpleApp starting in " + framework + " mode");
         Connection conn = null;
         ArrayList<Statement> statements = new ArrayList<Statement>(); // list of Statements, PreparedStatements
@@ -33,9 +36,9 @@ public class DB {
         PreparedStatement psUpdate = null;
         Statement s = null;
         ResultSet rs = null;
-        try {
-        } catch (Exception e) {
-        }
+//        try {
+//        } catch (Exception e) {
+//        } // Вообще пустой блок, зачем он?
         {
             Properties props = new Properties(); // connection properties
             props.put("user", "user1");
@@ -46,7 +49,15 @@ public class DB {
             conn.setAutoCommit(false);
             s = conn.createStatement();
             statements.add(s);
-            s.execute("create table location(num int, addr varchar(40))");
+            //таблицу нужно создавать только при первом запуске, когда она не существует. При последующих - она уже есть.
+            try {
+            	s.execute("create table location(num int, addr varchar(40))");
+            } catch (SQLException sqlException) {
+            	//Проверяем, если код состояния НЕ "таблица уже существует", то бросаем исключение. Иначе всё в порядке."
+            	if (!sqlException.getSQLState().equals(ERROR_TABLE_EXISTS_CODE)) {
+            		throw sqlException;
+            	}
+            }
             System.out.println("Created table location");
             conn.commit();
             System.out.println("Committed the transaction");
