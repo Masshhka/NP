@@ -75,6 +75,8 @@ public class DB {
             psInsert.executeUpdate();
             System.out.println("1  SERVER_PORT   localhost:8080");
 //!!!!!!
+            ///
+            ///
         }
         try {
             if (conn != null) {
