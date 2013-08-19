@@ -1,0 +1,13 @@
+----------------------------------------------------------------
+Mon Aug 19 10:49:17 MSD 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-0140-9555-b402-000000ae3c58 
+on database directory C:\MV_pr\derbyDB with class loader sun.misc.Launcher$AppClassLoader@d9f9c3 
+Loaded from file:/C:/Documents%20and%20Settings/user/.m2/repository/org/apache/derby/derby/10.10.1.1/derby-10.10.1.1.jar
+java.vendor=Sun Microsystems Inc.
+java.runtime.version=1.6.0_21-b07
+user.dir=C:\MV_pr
+os.name=Windows XP
+os.arch=x86
+os.version=5.1
+derby.system.home=null
+Database Class Loader started - derby.database.classpath=''
