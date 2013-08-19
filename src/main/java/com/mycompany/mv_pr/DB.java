@@ -35,9 +35,6 @@ public class DB {
         PreparedStatement psUpdate = null;
         Statement s = null;
         ResultSet rs = null;
-//        try {
-//        } catch (Exception e) {
-//        } // Вообще пустой блок, зачем он?
         {
             Properties props = new Properties(); // connection properties
             props.put("user", "user1");
