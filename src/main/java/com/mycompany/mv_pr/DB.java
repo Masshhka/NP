@@ -66,7 +66,7 @@ public class DB {
                         "insert into location values (?, ?)");
             statements.add(psInsert);
 
-            psInsert.setInt(1, 1);
+            psInsert.setInt(1, 1);  //не поняла по какому принципу ставятся цифры)) .. что вообще значит первая единичка?
             psInsert.setString(1, "SERVER_PORT");
             psInsert.setString(1, "localhost:8080");//вот тут я хочу взять значение хоста текущей открытой страницы
             //пытаюсь написать get, вылезает куча ошибок
