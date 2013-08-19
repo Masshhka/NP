@@ -57,7 +57,8 @@ public class DB {
             statements.add(s);
             //таблицу нужно создавать только при первом запуске, когда она не существует. При последующих - она уже есть.
             try {
-            	s.execute("create table location(num int, addr varchar(40))");
+            	//пример s.execute("create table location(num int, addr varchar(40))");
+              s.execute("create table location(id(PK), param_name varchar(70), param_value varchar(70), app_id int)");
             } catch (SQLException sqlException) {
             	//Проверяем, если код состояния НЕ "таблица уже существует", то бросаем исключение. Иначе всё в порядке."
             	if (!sqlException.getSQLState().equals(ERROR_TABLE_EXISTS_CODE)) {
@@ -70,17 +71,20 @@ public class DB {
    //!!!!!!         
             //заполняем строки
             psInsert = conn.prepareStatement(
-                        "insert into location values (?, ?)");
+                        "insert into location values (?, ?, ?, ?)");
             statements.add(psInsert);
 
             psInsert.setInt(1, 1);  //не поняла по какому принципу ставятся цифры)) .. что вообще значит первая единичка?
-            psInsert.setString(1, "SERVER_PORT");
-            psInsert.setString(1, "localhost:8080");//вот тут я хочу взять значение хоста текущей открытой страницы
+            psInsert.setString(2, "SERVER_PORT");
+            psInsert.setString(3,  String(Launcher.SERVER_PORT) );//вот тут я хочу взять значение хоста текущей открытой страницы
             //пытаюсь написать get, вылезает куча ошибок
-            
+            psInsert.setInt(4, 1);
             
             psInsert.executeUpdate();
-            System.out.println("1  SERVER_PORT   localhost:8080");
+            System.out.println("1  SERVER_PORT  localhost:8080    1");
+             rs = s.executeQuery(
+                    "SELECT num, addr FROM location");
+             conn.setAutoCommit(true);
 //!!!!!!
             ///
             ///
@@ -101,6 +105,10 @@ public class DB {
     }
 
     private void printSQLException(SQLException sqle) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    private String String(int SERVER_PORT) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 }
