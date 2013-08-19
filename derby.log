@@ -1,4 +1,5 @@
 ----------------------------------------------------------------
+<<<<<<< HEAD
 Mon Aug 19 10:49:17 MSD 2013:
 Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-0140-9555-b402-000000ae3c58 
 on database directory C:\MV_pr\derbyDB with class loader sun.misc.Launcher$AppClassLoader@d9f9c3 
@@ -9,5 +10,17 @@ user.dir=C:\MV_pr
 os.name=Windows XP
 os.arch=x86
 os.version=5.1
+=======
+Fri Aug 16 14:14:37 MSK 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-0140-869e-a14c-00000673cce0 
+on database directory /home/skupriyanov/Projects/NP/derbyDB with class loader sun.misc.Launcher$AppClassLoader@33d232d1 
+Loaded from file:/home/skupriyanov/.m2/repository/org/apache/derby/derby/10.10.1.1/derby-10.10.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_40-b31
+user.dir=/home/skupriyanov/Projects/NP
+os.name=Linux
+os.arch=amd64
+os.version=3.10.3-1-ARCH
+>>>>>>> 06c186dbf70baf3256204fe40482f65469403f1d
 derby.system.home=null
 Database Class Loader started - derby.database.classpath=''

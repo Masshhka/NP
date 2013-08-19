@@ -29,12 +29,22 @@ public class DB {
     void go(String[] args) throws SQLException {
 //      parseArguments(args); //не надо вызывать методы с заглушкой, которые бросают исключения. У тебя код дальше не выполнялся.
         System.out.println("DB starting in " + framework + " mode");
+    //у тебя метод выбрасывает SQLException, обрабатывать его внутри не нужно. Его лучше обработать там, где вызываешь, в launcher.
+   //!!  void go(String[] args) throws SQLException {
+//      parseArguments(args); //не надо вызывать методы с заглушкой, которые бросают исключения. У тебя код дальше не выполнялся.
+        System.out.println("SimpleApp starting in " + framework + " mode");
+
         Connection conn = null;
         ArrayList<Statement> statements = new ArrayList<Statement>(); // list of Statements, PreparedStatements
         PreparedStatement psInsert = null;
         PreparedStatement psUpdate = null;
         Statement s = null;
         ResultSet rs = null;
+
+
+//        try {
+//        } catch (Exception e) {
+//        } // Вообще пустой блок, зачем он?
         {
             Properties props = new Properties(); // connection properties
             props.put("user", "user1");
