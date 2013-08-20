@@ -3,3 +3,4 @@ derby.lognb-configuration.xml
 .settings
 .project
 .classpath
+derby.log
