@@ -20,17 +20,9 @@ import org.mortbay.jetty.webapp.WebAppContext;
  */
 public class Launcher {
 
-<<<<<<< HEAD
-//    private static final String APPLICATION_PATH = "src\\main\\webapp";        //путь к папке с приложением было src/main/webapp
-    private static final String APPLICATION_PATH = "src" + File.separator + "main" + File.separator + "webapp";
+    public static final String APPLICATION_PATH = "src" + File.separator + "main" + File.separator + "webapp";
     public static final int SERVER_PORT = 8089;                              // на каком порту работает приложение
-=======
-
-	
-    private static final String APPLICATION_PATH = "src\\main\\webapp";        //путь к папке с приложением было src/main/webapp
-    private static final int SERVER_PORT = 8089;                              // на каком порту работает приложение
->>>>>>> 6bf5b3ee5254929028648ddc04a5f1285789454d
-    private static final String MAPPING = "/";                               //на каком адресе отвечает приложение
+    public static final String MAPPING = "/";                        //на каком адресе отвечает приложение
     public static final String SERVER_NAME = "localhost";
 
     private static void initializeServer(String appPath, String mapping, int port) throws Exception {
