@@ -34,14 +34,14 @@ public class DB {
         Statement s = null;
         ResultSet rs = null;
         Properties props = new Properties(); // connection properties
-        String dbName = "location"; // the name of the database
+        String dbName = "PROPERTIES"; // the name of the database
         conn = DriverManager.getConnection(protocol + dbName + ";create=true", props);
         System.out.println("Connected to and created database " + dbName);
         //conn.setAutoCommit(false);
         s = conn.createStatement();
         statements.add(s);
         try {
-            s.execute("create table location(id int, param_name varchar(40), param_value varchar(40), app_id int");
+            s.execute("create table location(id int, param_name varchar(40), param_value varchar(40), app_id int)");
         } catch (SQLException sqlException) {
             if (!sqlException.getSQLState().equals(ERROR_TABLE_EXISTS_CODE)) {
                 throw sqlException;
@@ -58,7 +58,7 @@ public class DB {
         psInsert.setString(3, Launcher.SERVER_NAME);
         psInsert.setInt(4, 1);
         psInsert.executeUpdate();
-        rs = s.executeQuery("select * from location");
+        rs = s.executeQuery("select * from PROPERTIES");
         while (rs.next()) {
             System.out.println(rs.getInt("id") + " " + rs.getString("param_name") + " " + rs.getString("param_value") + " " + rs.getInt("app_id"));
         }
