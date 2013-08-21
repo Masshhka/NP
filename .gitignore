@@ -1,6 +1,17 @@
-target
+target/
+derbyDB/
+location/
 derby.lognb-configuration.xml
 .settings
 .project
 .classpath
 derby.log
+
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.dat
+*.ctrl
