@@ -37,7 +37,8 @@ public class DB {
         String dbName = "PROPERTIES"; // the name of the database
         conn = DriverManager.getConnection(protocol + dbName + ";create=true", props);
         System.out.println("Connected to and created database " + dbName);
-        //conn.setAutoCommit(false);
+        conn.setAutoCommit(true);
+//        conn.setAutoCommit(false);
         s = conn.createStatement();
         statements.add(s);
         try {
@@ -58,7 +59,18 @@ public class DB {
         psInsert.setString(3, Launcher.SERVER_NAME);
         psInsert.setInt(4, 1);
         psInsert.executeUpdate();
-        rs = s.executeQuery("select * from PROPERTIES");
+        
+        psInsert.setInt(1, 2);
+        psInsert.setString(2, "SERVER_PORT");
+        psInsert.setString(3, String.valueOf(Launcher.SERVER_PORT));
+        psInsert.executeUpdate();
+        
+        psInsert.setInt(1, 3);
+        psInsert.setString(2, "APPLICATION_PATH");
+        psInsert.setString(3, Launcher.APPLICATION_PATH);
+        psInsert.executeUpdate();
+        
+        rs = s.executeQuery("select * from location");
         while (rs.next()) {
             System.out.println(rs.getInt("id") + " " + rs.getString("param_name") + " " + rs.getString("param_value") + " " + rs.getInt("app_id"));
         }
