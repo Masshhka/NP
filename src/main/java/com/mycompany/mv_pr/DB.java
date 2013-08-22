@@ -66,6 +66,11 @@ public class DB {
         psInsert.executeUpdate();
         
         psInsert.setInt(1, 3);
+        psInsert.setString(2, "MAPPING");
+        psInsert.setString(3, Launcher.MAPPING);
+        psInsert.executeUpdate();
+        
+        psInsert.setInt(1, 4);
         psInsert.setString(2, "APPLICATION_PATH");
         psInsert.setString(3, Launcher.APPLICATION_PATH);
         psInsert.executeUpdate();
