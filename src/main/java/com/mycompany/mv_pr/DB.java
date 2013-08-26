@@ -38,7 +38,7 @@ public class DB {
         conn = DriverManager.getConnection(protocol + dbName + ";create=true", props);
         System.out.println("Connected to and created database " + dbName);
         conn.setAutoCommit(true);
-//        conn.setAutoCommit(false);
+//      conn.setAutoCommit(false);
         s = conn.createStatement();
         statements.add(s);
         try {
