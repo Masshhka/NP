@@ -17,11 +17,6 @@ import javax.swing.JTextField;
 public class For_Panel extends JPanel {
 
     public For_Panel() {
-        // указать менеджер компоновки
-        //setLayout(new Менеджер_компоновки(парметры));
-        // добавление компонентов на панель
-        //Тип_компонента имя_компонента=new Тип_компонента(параметры);
-        //add(имя_компонента);
         GridLayout g1 = new GridLayout(5, 1);
         setLayout(g1);
         
