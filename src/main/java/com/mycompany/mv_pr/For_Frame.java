@@ -21,8 +21,6 @@ import javax.swing.JFrame;
         //другими словами, возвращает объект, имеющий метод для добавления компонента на фрейм
         //общий вид:
         Container contentPane=super.getContentPane();
-        //для добавления панели:
-        // класс MyPanel описан далее
         For_Panel panel1=new For_Panel();
         contentPane.add(panel1);
     }
