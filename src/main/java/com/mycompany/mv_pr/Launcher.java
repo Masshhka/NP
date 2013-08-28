@@ -24,6 +24,7 @@ public class Launcher {
     public static final int SERVER_PORT = 8089;                              // на каком порту работает приложение
     public static final String MAPPING = "/";                        //на каком адресе отвечает приложение
     public static final String SERVER_NAME = "localhost";
+    private static final String warPath = APPLICATION_PATH + File.separator + "WebApp-1.0-SNAPCSHOT.war";
 
     private static void initializeServer(String appPath, String mapping, int port) throws Exception {
         Server server = new Server();
@@ -31,23 +32,35 @@ public class Launcher {
         connector.setPort(port);                                          // на каком порту слушаем соединение от клиента
         server.addConnector(connector);                                  //привязываем коннектор к серверу
         WebAppContext root = new WebAppContext(appPath, mapping);        //создаём контекст нашего приложения, тут указываем путь к файлам и куда мапить в конструкторе (тут тоже пригодится импорт)
-        server.setHandlers(new Handler[]{root});                          //серверу устанавливаются обработчики запросов на адре
+       // root.setContextPath("/");
+        root.setWar(warPath);
+        webapp.setWar(warPath);
+        server.setHandler(root);
+        //server.setHandlers(new Handler[]{root});                          //серверу устанавливаются обработчики запросов на адре
         server.start();
         //new Handler[] { root } - тут создаётся массив экземпляров класса Handler с одним элементом - root
     }
 
     public static void main(String[] args) {
+//        try {
+//            try {
+//                initializeServer(APPLICATION_PATH, MAPPING, SERVER_PORT);
+//            } catch (Exception exception) {
+//                exception.printStackTrace();
+//            }
+//            new DB().go(args);
+//            System.out.println("DB finished");
+//        } catch (SQLException ex) {
+//            Logger.getLogger(Launcher.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         try {
-            try {
-                initializeServer(APPLICATION_PATH, MAPPING, SERVER_PORT);
-            } catch (Exception exception) {
-                exception.printStackTrace();
-            }
+            initializeServer(APPLICATION_PATH, MAPPING, SERVER_PORT);
             new DB().go(args);
             System.out.println("DB finished");
         } catch (SQLException ex) {
             Logger.getLogger(Launcher.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (Exception exception) {
+            exception.printStackTrace();
         }
-
     }
 }
