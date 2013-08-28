@@ -1,13 +1,216 @@
 ----------------------------------------------------------------
-Wed Aug 28 12:44:24 MSD 2013:
-Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-0140-c418-564f-000000aeff30 
-on database directory C:\MV_pr\PROPERTIES with class loader sun.misc.Launcher$AppClassLoader@d9f9c3 
-Loaded from file:/C:/Documents%20and%20Settings/user/.m2/repository/org/apache/derby/derby/10.10.1.1/derby-10.10.1.1.jar
-java.vendor=Sun Microsystems Inc.
-java.runtime.version=1.6.0_21-b07
-user.dir=C:\MV_pr
-os.name=Windows XP
-os.arch=x86
-os.version=5.1
+Wed Aug 28 13:45:15 MSK 2013:
+Booting Derby version The Apache Software Foundation - Apache Derby - 10.10.1.1 - (1458268): instance a816c00e-0140-c450-0e99-0000069c2f40 
+on database directory /home/skupriyanov/Projects/NP/PROPERTIES with class loader sun.misc.Launcher$AppClassLoader@33d232d1 
+Loaded from file:/home/skupriyanov/.m2/repository/org/apache/derby/derby/10.10.1.1/derby-10.10.1.1.jar
+java.vendor=Oracle Corporation
+java.runtime.version=1.7.0_40-b31
+user.dir=/home/skupriyanov/Projects/NP
+os.name=Linux
+os.arch=amd64
+os.version=3.10.3-1-ARCH
 derby.system.home=null
-Database Class Loader started - derby.database.classpath=''
+----------------------------------------------------------------
+Wed Aug 28 13:45:16 MSK 2013:
+Shutting down instance a816c00e-0140-c450-0e99-0000069c2f40 on database directory /home/skupriyanov/Projects/NP/PROPERTIES with class loader sun.misc.Launcher$AppClassLoader@33d232d1 
+Wed Aug 28 13:45:16 MSK 2013 Thread[main,5,main] Cleanup action starting
+java.sql.SQLException: Failed to start database 'PROPERTIES' with class loader sun.misc.Launcher$AppClassLoader@33d232d1, see the next exception for details.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.newEmbedSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.seeNextException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection40.<init>(Unknown Source)
+	at org.apache.derby.jdbc.Driver40.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.Driver20.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql.DriverManager.getConnection(DriverManager.java:571)
+	at java.sql.DriverManager.getConnection(DriverManager.java:187)
+	at com.mycompany.mv_pr.DB.go(DB.java:38)
+	at com.mycompany.mv_pr.Launcher.main(Launcher.java:57)
+Caused by: java.sql.SQLException: Failed to start database 'PROPERTIES' with class loader sun.misc.Launcher$AppClassLoader@33d232d1, see the next exception for details.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	... 14 more
+Caused by: java.sql.SQLException: The conglomerate (16) requested does not exist.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	... 11 more
+Caused by: ERROR XSAI2: The conglomerate (16) requested does not exist.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.store.access.heap.HeapConglomerateFactory.readConglomerate(Unknown Source)
+	at org.apache.derby.impl.store.access.CacheableConglomerate.setIdentity(Unknown Source)
+	at org.apache.derby.impl.services.cache.ConcurrentCache.find(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMAccessManager.conglomCacheFind(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMTransaction.findConglomerate(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMTransaction.findExistingConglomerate(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMTransaction.openScan(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.openScan(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.readDbProperties(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.getCachedDbProperties(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.getCachedProperty(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.getProperty(Unknown Source)
+	at org.apache.derby.impl.store.access.PC_XenaVersion.upgradeIfNeeded(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.<init>(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMAccessManager.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
+	at org.apache.derby.impl.db.BasicDatabase.bootStore(Unknown Source)
+	at org.apache.derby.impl.db.BasicDatabase.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Unknown Source)
+	... 11 more
+============= begin nested exception, level (1) ===========
+java.sql.SQLException: The conglomerate (16) requested does not exist.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection40.<init>(Unknown Source)
+	at org.apache.derby.jdbc.Driver40.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.Driver20.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql.DriverManager.getConnection(DriverManager.java:571)
+	at java.sql.DriverManager.getConnection(DriverManager.java:187)
+	at com.mycompany.mv_pr.DB.go(DB.java:38)
+	at com.mycompany.mv_pr.Launcher.main(Launcher.java:57)
+Caused by: java.sql.SQLException: The conglomerate (16) requested does not exist.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	... 13 more
+Caused by: ERROR XSAI2: The conglomerate (16) requested does not exist.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.store.access.heap.HeapConglomerateFactory.readConglomerate(Unknown Source)
+	at org.apache.derby.impl.store.access.CacheableConglomerate.setIdentity(Unknown Source)
+	at org.apache.derby.impl.services.cache.ConcurrentCache.find(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMAccessManager.conglomCacheFind(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMTransaction.findConglomerate(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMTransaction.findExistingConglomerate(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMTransaction.openScan(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.openScan(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.readDbProperties(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.getCachedDbProperties(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.getCachedProperty(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.getProperty(Unknown Source)
+	at org.apache.derby.impl.store.access.PC_XenaVersion.upgradeIfNeeded(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.<init>(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMAccessManager.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
+	at org.apache.derby.impl.db.BasicDatabase.bootStore(Unknown Source)
+	at org.apache.derby.impl.db.BasicDatabase.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Unknown Source)
+	... 11 more
+============= end nested exception, level (1) ===========
+============= begin nested exception, level (2) ===========
+java.sql.SQLException: The conglomerate (16) requested does not exist.
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.wrapArgsForTransportAcrossDRDA(Unknown Source)
+	at org.apache.derby.impl.jdbc.SQLExceptionFactory40.getSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.Util.generateCsSQLException(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection40.<init>(Unknown Source)
+	at org.apache.derby.jdbc.Driver40.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.Driver20.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql.DriverManager.getConnection(DriverManager.java:571)
+	at java.sql.DriverManager.getConnection(DriverManager.java:187)
+	at com.mycompany.mv_pr.DB.go(DB.java:38)
+	at com.mycompany.mv_pr.Launcher.main(Launcher.java:57)
+Caused by: ERROR XSAI2: The conglomerate (16) requested does not exist.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.store.access.heap.HeapConglomerateFactory.readConglomerate(Unknown Source)
+	at org.apache.derby.impl.store.access.CacheableConglomerate.setIdentity(Unknown Source)
+	at org.apache.derby.impl.services.cache.ConcurrentCache.find(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMAccessManager.conglomCacheFind(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMTransaction.findConglomerate(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMTransaction.findExistingConglomerate(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMTransaction.openScan(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.openScan(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.readDbProperties(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.getCachedDbProperties(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.getCachedProperty(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.getProperty(Unknown Source)
+	at org.apache.derby.impl.store.access.PC_XenaVersion.upgradeIfNeeded(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.<init>(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMAccessManager.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
+	at org.apache.derby.impl.db.BasicDatabase.bootStore(Unknown Source)
+	at org.apache.derby.impl.db.BasicDatabase.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Unknown Source)
+	... 11 more
+============= end nested exception, level (2) ===========
+============= begin nested exception, level (3) ===========
+ERROR XSAI2: The conglomerate (16) requested does not exist.
+	at org.apache.derby.iapi.error.StandardException.newException(Unknown Source)
+	at org.apache.derby.impl.store.access.heap.HeapConglomerateFactory.readConglomerate(Unknown Source)
+	at org.apache.derby.impl.store.access.CacheableConglomerate.setIdentity(Unknown Source)
+	at org.apache.derby.impl.services.cache.ConcurrentCache.find(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMAccessManager.conglomCacheFind(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMTransaction.findConglomerate(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMTransaction.findExistingConglomerate(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMTransaction.openScan(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.openScan(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.readDbProperties(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.getCachedDbProperties(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.getCachedProperty(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.getProperty(Unknown Source)
+	at org.apache.derby.impl.store.access.PC_XenaVersion.upgradeIfNeeded(Unknown Source)
+	at org.apache.derby.impl.store.access.PropertyConglomerate.<init>(Unknown Source)
+	at org.apache.derby.impl.store.access.RAMAccessManager.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startModule(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.bootServiceModule(Unknown Source)
+	at org.apache.derby.impl.db.BasicDatabase.bootStore(Unknown Source)
+	at org.apache.derby.impl.db.BasicDatabase.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.boot(Unknown Source)
+	at org.apache.derby.impl.services.monitor.TopService.bootModule(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.bootService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startProviderService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.findProviderAndStartService(Unknown Source)
+	at org.apache.derby.impl.services.monitor.BaseMonitor.startPersistentService(Unknown Source)
+	at org.apache.derby.iapi.services.monitor.Monitor.startPersistentService(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.bootDatabase(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection.<init>(Unknown Source)
+	at org.apache.derby.impl.jdbc.EmbedConnection40.<init>(Unknown Source)
+	at org.apache.derby.jdbc.Driver40.getNewEmbedConnection(Unknown Source)
+	at org.apache.derby.jdbc.InternalDriver.connect(Unknown Source)
+	at org.apache.derby.jdbc.Driver20.connect(Unknown Source)
+	at org.apache.derby.jdbc.AutoloadedDriver.connect(Unknown Source)
+	at java.sql.DriverManager.getConnection(DriverManager.java:571)
+	at java.sql.DriverManager.getConnection(DriverManager.java:187)
+	at com.mycompany.mv_pr.DB.go(DB.java:38)
+	at com.mycompany.mv_pr.Launcher.main(Launcher.java:57)
+============= end nested exception, level (3) ===========
+Cleanup action completed
