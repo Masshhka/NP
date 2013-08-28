@@ -21,7 +21,7 @@ import org.mortbay.jetty.webapp.WebAppContext;
 public class Launcher {
 
     public static final String APPLICATION_PATH = "src" + File.separator + "main" + File.separator + "webapp";
-    public static final int SERVER_PORT = 8089;                              // на каком порту работает приложение
+    public static final int SERVER_PORT = 8089;                       // на каком порту работает приложение
     public static final String MAPPING = "/";                        //на каком адресе отвечает приложение
     public static final String SERVER_NAME = "localhost";
     private static final String warPath = APPLICATION_PATH + File.separator + "WebApp-1.0-SNAPCSHOT.war";
