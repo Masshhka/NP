@@ -8,8 +8,6 @@ import java.io.File;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import org.mortbay.jetty.Connector;
 import org.mortbay.jetty.Handler;
 import org.mortbay.jetty.Server;
@@ -45,15 +43,11 @@ public class Launcher {
             } catch (Exception exception) {
                 exception.printStackTrace();
             }
-
-
             new DB().go(args);
             System.out.println("DB finished");
         } catch (SQLException ex) {
             Logger.getLogger(Launcher.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        For_Frame fr= new For_Frame();
-            fr.setVisible(true);
     }
 }
