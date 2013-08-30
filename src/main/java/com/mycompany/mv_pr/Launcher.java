@@ -42,7 +42,7 @@ public class Launcher {
     public static void main(String[] args) {
         try {
             initializeServer(APPLICATION_PATH, MAPPING, SERVER_PORT);
-//            new DB().go(args);
+          new DB().go(args);
             System.out.println("DB finished");
         } catch (SQLException ex) {
         	ex.printStackTrace();
