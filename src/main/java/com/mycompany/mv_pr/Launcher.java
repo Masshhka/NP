@@ -1,3 +1,4 @@
+
 /*
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
@@ -6,10 +7,8 @@ package com.mycompany.mv_pr;
 
 import java.io.File;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import org.mortbay.jetty.Connector;
-import org.mortbay.jetty.Handler;
 import org.mortbay.jetty.Server;
 import org.mortbay.jetty.nio.SelectChannelConnector;
 import org.mortbay.jetty.webapp.WebAppContext;
@@ -24,17 +23,16 @@ public class Launcher {
     public static final int SERVER_PORT = 8089;                       // на каком порту работает приложение
     public static final String MAPPING = "/";                        //на каком адресе отвечает приложение
     public static final String SERVER_NAME = "localhost";
-    private static final String warPath = APPLICATION_PATH + File.separator + "WebApp-1.0-SNAPCSHOT.war";
+    private static final String warPath = APPLICATION_PATH + File.separator + "WebApp-1.0-SNAPSHOT.war";
 
     private static void initializeServer(String appPath, String mapping, int port) throws Exception {
         Server server = new Server();
         Connector connector = new SelectChannelConnector();
         connector.setPort(port);                                          // на каком порту слушаем соединение от клиента
         server.addConnector(connector);                                  //привязываем коннектор к серверу
-        WebAppContext root = new WebAppContext(appPath, mapping);        //создаём контекст нашего приложения, тут указываем путь к файлам и куда мапить в конструкторе (тут тоже пригодится импорт)
-       // root.setContextPath("/");
+        WebAppContext root = new WebAppContext();        //создаём контекст нашего приложения, тут указываем путь к файлам и куда мапить в конструкторе (тут тоже пригодится импорт)
+        root.setContextPath(MAPPING);
         root.setWar(warPath);
-        webapp.setWar(warPath);
         server.setHandler(root);
         //server.setHandlers(new Handler[]{root});                          //серверу устанавливаются обработчики запросов на адре
         server.start();
@@ -42,23 +40,12 @@ public class Launcher {
     }
 
     public static void main(String[] args) {
-//        try {
-//            try {
-//                initializeServer(APPLICATION_PATH, MAPPING, SERVER_PORT);
-//            } catch (Exception exception) {
-//                exception.printStackTrace();
-//            }
-//            new DB().go(args);
-//            System.out.println("DB finished");
-//        } catch (SQLException ex) {
-//            Logger.getLogger(Launcher.class.getName()).log(Level.SEVERE, null, ex);
-//        }
         try {
             initializeServer(APPLICATION_PATH, MAPPING, SERVER_PORT);
-            new DB().go(args);
+//            new DB().go(args);
             System.out.println("DB finished");
         } catch (SQLException ex) {
-            Logger.getLogger(Launcher.class.getName()).log(Level.SEVERE, null, ex);
+        	ex.printStackTrace();
         } catch (Exception exception) {
             exception.printStackTrace();
         }

@@ -51,30 +51,35 @@ public class DB {
         System.out.println("Created table location");
         //conn.commit();
         System.out.println("Committed the transaction");
+        rs = s.executeQuery("SELECT * FROM location WHERE SERVER_NAME=localhost");
+        if (rs==0) 
+        {
 
-        psInsert = conn.prepareStatement("insert into location values (?, ?, ?, ?)");
-        statements.add(psInsert);
-        psInsert.setInt(1, 1);
-        psInsert.setString(2, "SERVER_NAME");
-        psInsert.setString(3, Launcher.SERVER_NAME);
-        psInsert.setInt(4, 1);
-        psInsert.executeUpdate();
-        
+            psInsert = conn.prepareStatement("insert into location values (?, ?, ?, ?)");
+            statements.add(psInsert);
+            psInsert.setInt(1, 1);
+            psInsert.setString(2, "SERVER_NAME");
+            psInsert.setString(3, Launcher.SERVER_NAME);
+            psInsert.setInt(4, 1);
+        } else {
+            psInsert.executeUpdate();
+        }
+
         psInsert.setInt(1, 2);
         psInsert.setString(2, "SERVER_PORT");
         psInsert.setString(3, String.valueOf(Launcher.SERVER_PORT));
         psInsert.executeUpdate();
-        
+
         psInsert.setInt(1, 3);
         psInsert.setString(2, "MAPPING");
         psInsert.setString(3, Launcher.MAPPING);
         psInsert.executeUpdate();
-        
+
         psInsert.setInt(1, 4);
         psInsert.setString(2, "APPLICATION_PATH");
         psInsert.setString(3, Launcher.APPLICATION_PATH);
         psInsert.executeUpdate();
-        
+
         rs = s.executeQuery("select * from location");
         while (rs.next()) {
             System.out.println(rs.getInt("id") + " " + rs.getString("param_name") + " " + rs.getString("param_value") + " " + rs.getInt("app_id"));
