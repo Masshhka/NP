@@ -12,7 +12,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
-
 /**
  *
  * @author user
@@ -23,7 +22,6 @@ public class DB {
     private String framework = "embedded";
     private String protocol = "jdbc:derby:";
     private static final String ERROR_TABLE_EXISTS_CODE = "X0Y32";
-
     void go(String[] args) throws SQLException {
         System.out.println("DB starting in " + framework + " mode");
         System.out.println("SimpleApp starting in " + framework + " mode");
@@ -37,7 +35,6 @@ public class DB {
         conn = DriverManager.getConnection(protocol + dbName + ";create=true", props);
         System.out.println("Connected to and created database " + dbName);
         conn.setAutoCommit(true);
-//      conn.setAutoCommit(false);
         s = conn.createStatement();
         statements.add(s);
         try {
@@ -48,7 +45,6 @@ public class DB {
             }
         }
         System.out.println("Created table location");
-        //conn.commit();
         System.out.println("Committed the transaction");
         rs = s.executeQuery("SELECT count(*) FROM location WHERE SERVER_NAME=localhost");
         if (rs==null) 
@@ -62,7 +58,6 @@ public class DB {
         } else {
             psInsert.executeUpdate();
         }
-
         psInsert.setInt(1, 2);
         psInsert.setString(2, "SERVER_PORT");
         psInsert.setString(3, String.valueOf(Launcher.SERVER_PORT));
