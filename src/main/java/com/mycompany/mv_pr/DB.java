@@ -30,7 +30,6 @@ public class DB {
         Connection conn = null;
         ArrayList<Statement> statements = new ArrayList<Statement>(); // list of
         PreparedStatement psInsert = null;
-        // PreparedStatement psUpdate = null;
         Statement s = null;
         ResultSet rs = null;
         Properties props = new Properties(); // connection properties
