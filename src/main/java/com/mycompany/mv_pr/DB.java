@@ -47,6 +47,7 @@ public class DB {
         System.out.println("Created table location");
         System.out.println("Committed the transaction");
         rs = s.executeQuery("SELECT count(*) FROM location WHERE SERVER_NAME=localhost");
+        //+
         if (rs==null) 
         {
             psInsert = conn.prepareStatement("insert into location values (?, ?, ?, ?)");
