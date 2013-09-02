@@ -15,7 +15,8 @@ import org.mortbay.jetty.handler.AbstractHandler;
  *
  * @author user
  */
- abstract class MyHandle extends AbstractHandler{
+ public class MyHandler extends AbstractHandler{
+     Override
     public void handle(String target, Request baseRequest,HttpServletRequest request, HttpServletResponse response)
                 throws IOException, ServletException {
  
