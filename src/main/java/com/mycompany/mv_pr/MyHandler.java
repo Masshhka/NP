@@ -15,17 +15,9 @@ import org.mortbay.jetty.handler.AbstractHandler;
  *
  * @author user
  */
- public class MyHandler extends AbstractHandler{
+public class MyHandler extends AbstractHandler {
 
-//    public void handle(String target, Request baseRequest,HttpServletRequest request, HttpServletResponse response)
-//                throws IOException, ServletException {
- @Override
-     public void handle(String target, HttpServletRequest request, HttpServletResponse response, int dispatch)
-        throws IOException, ServletException{
-            response.setContentType("text/html;charset=utf-8");
-
-            response.setStatus(HttpServletResponse.SC_OK);
-            response.getWriter().println("Hello World");
-        }
-
-         }
+    public void handle(String target, HttpServletRequest request, HttpServletResponse response, int dispatch)
+            throws IOException, ServletException {
+    }
+}
