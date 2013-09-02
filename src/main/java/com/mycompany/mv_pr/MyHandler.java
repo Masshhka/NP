@@ -8,7 +8,6 @@ import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.mortbay.jetty.Handler;
 import org.mortbay.jetty.Request;
 import org.mortbay.jetty.handler.AbstractHandler;
 
@@ -16,7 +15,7 @@ import org.mortbay.jetty.handler.AbstractHandler;
  *
  * @author user
  */
-public class MyHandle extends AbstractHandler{
+ abstract class MyHandle extends AbstractHandler{
     public void handle(String target, Request baseRequest,HttpServletRequest request, HttpServletResponse response)
                 throws IOException, ServletException {
  
@@ -27,9 +26,6 @@ public class MyHandle extends AbstractHandler{
             baseRequest.setHandled(true);
 
             response.getWriter().println("Hello World");
-
-             
-
         }
 
          }

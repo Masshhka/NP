@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Properties;
+
 /**
  *
  * @author user
@@ -22,6 +23,7 @@ public class DB {
     private String framework = "embedded";
     private String protocol = "jdbc:derby:";
     private static final String ERROR_TABLE_EXISTS_CODE = "X0Y32";
+
     void go(String[] args) throws SQLException {
         System.out.println("DB starting in " + framework + " mode");
         System.out.println("SimpleApp starting in " + framework + " mode");
@@ -46,11 +48,10 @@ public class DB {
         }
         System.out.println("Created table location");
         System.out.println("Committed the transaction");
-        rs = s.executeQuery("SELECT count(*) FROM location a inner join location b on a.app_id = b.app_id where a.param_name = 'SERVER_NAME' and a.param_value = " + Launcher.SERVER_NAME + 
-"and b.param_name = 'SERVER_PORT' and b.param_value = " + Launcher.SERVER_PORT);
-        
-       if (rs != null && rs.getInt(1) == 0)
-        {
+        rs = s.executeQuery("SELECT count(*) FROM location a inner join location b on a.app_id = b.app_id where a.param_name = 'SERVER_NAME' and a.param_value = " + Launcher.SERVER_NAME
+                + "and b.param_name = 'SERVER_PORT' and b.param_value = " + Launcher.SERVER_PORT);
+
+        if (rs != null && rs.getInt(1) == 0) {
             psInsert = conn.prepareStatement("insert into location values (?, ?, ?, ?)");
             statements.add(psInsert);
             psInsert.setInt(1, 1);
