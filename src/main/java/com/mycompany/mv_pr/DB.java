@@ -46,9 +46,10 @@ public class DB {
         }
         System.out.println("Created table location");
         System.out.println("Committed the transaction");
-        rs = s.executeQuery("SELECT count(*) FROM location WHERE SERVER_NAME=localhost");
-        //+
-        if (rs==null) 
+        rs = s.executeQuery("SELECT count(*) FROM location a inner join location b on a.app_id = b.app_id where a.param_name = 'SERVER_NAME' and a.param_value = " + Launcher.SERVER_NAME + 
+"and b.param_name = 'SERVER_PORT' and b.param_value = " + Launcher.SERVER_PORT);
+        
+       if (rs != null && rs.getInt(1) == 0)
         {
             psInsert = conn.prepareStatement("insert into location values (?, ?, ?, ?)");
             statements.add(psInsert);
