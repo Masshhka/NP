@@ -19,15 +19,12 @@ import org.mortbay.jetty.handler.AbstractHandler;
 
 //    public void handle(String target, Request baseRequest,HttpServletRequest request, HttpServletResponse response)
 //                throws IOException, ServletException {
- @Overridee
+ @Override
      public void handle(String target, HttpServletRequest request, HttpServletResponse response, int dispatch)
         throws IOException, ServletException{
             response.setContentType("text/html;charset=utf-8");
 
             response.setStatus(HttpServletResponse.SC_OK);
-
-          //  baseRequest.setHandled(true);
-
             response.getWriter().println("Hello World");
         }
 
